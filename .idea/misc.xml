@@ -9,4 +9,11 @@
       </MTProjectMetadataState>
     </option>
   </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/team/pom.xml" />
+      </list>
+    </option>
+  </component>
 </project>
