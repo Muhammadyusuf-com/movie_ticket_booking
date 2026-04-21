@@ -1,9 +1,9 @@
 package identity;
 
-import enums.Address;
+import enums.AccountStatus;
 
-public class Customer extends Person{
-    public Customer(String name, Address address, String email, String phone){
-        super(name,address,email,phone);
+public class Customer extends Account{
+    public Customer(String id, String password, AccountStatus status,Person person){
+        super(id,password,status,person);
     }
 }
