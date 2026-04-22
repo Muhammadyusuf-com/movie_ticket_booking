@@ -18,7 +18,6 @@ public abstract class Account implements Serializable {
     public boolean resetPassword(String newPasswrod){
         this.passwrod = newPasswrod;
         return true;
-
     }
 
     public String getPasswrod() {
