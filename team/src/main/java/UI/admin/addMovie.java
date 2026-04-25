@@ -15,25 +15,25 @@ public class addMovie extends GridPane {
         root.setHgap(10);
 
         TextField titleField = new TextField();
-        Label titleLabel = new Label();
+        Label titleLabel = new Label("Title");
 
         TextField descriptionField = new TextField();
-        Label descriptionLabel = new Label();
+        Label descriptionLabel = new Label("Description");
 
         TextField durationField = new TextField();
-        Label durationLabel = new Label();
+        Label durationLabel = new Label("Duration");
 
         TextField languageField = new TextField();
-        Label languageLabel = new Label();
+        Label languageLabel = new Label("Language");
 
-        DateCell releaseDate = new DateCell();
-        Label releaseLabel = new Label();
+        TextField releaseDate = new TextField();
+        Label releaseLabel = new Label("Release Date");
 
         TextField country = new TextField();
-        Label countryLabel = new Label();
+        Label countryLabel = new Label("Country");
 
         TextField genre = new TextField();
-        Label genreLabel = new Label();
+        Label genreLabel = new Label("Genre");
         Button addMovie = new Button("Add Movie");
 
         root.add(titleLabel,0,0);

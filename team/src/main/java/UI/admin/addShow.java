@@ -14,12 +14,12 @@ public class addShow extends GridPane {
         root.setVgap(10);
         root.setHgap(10);
 
-        DateCell createdOn = new DateCell();
-        Label createdOnLabel = new Label();
+        TextField createdOn = new TextField();
+        Label createdOnLabel = new Label("Date created: ");
         TextField startTime = new TextField();
-        Label startTimeLabel = new Label();
+        Label startTimeLabel = new Label("Starting time");
         TextField endTime = new TextField();
-        Label endTimeLabel = new Label();
+        Label endTimeLabel = new Label("Ending time");
 
         Button addShow = new Button("Add Show");
 
@@ -28,7 +28,7 @@ public class addShow extends GridPane {
         root.add(startTimeLabel,0,1);
         root.add(startTime,1,1);
         root.add(endTimeLabel,0,2);
-        root.add(endTimeLabel,1,2);
+        root.add(endTime,1,2);
         root.add(addShow,1,3);
 
         addShow.setOnMouseClicked(event -> {

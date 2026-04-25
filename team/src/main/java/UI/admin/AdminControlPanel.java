@@ -10,8 +10,10 @@ public class AdminControlPanel {
     private Scene scene;
     public AdminControlPanel(){
         HBox main = new HBox(20);
+        this.scene = new Scene(main,600,400);
         main.setPadding(new Insets(10));
         VBox selectionPanel = new VBox(15);
+        main.getChildren().add(selectionPanel);
         selectionPanel.setPadding(new Insets(10));
         Button addMovieButton = new Button("Add Movie");
         Button addShowButton = new Button("Add Show");
@@ -26,31 +28,36 @@ public class AdminControlPanel {
         addMovie addmovie = new addMovie();
 
         addMovieButton.setOnMouseClicked(event -> {
-            if(main.getChildren().contains(addshow)){
-                main.getChildren().remove(addshow);
+            if(main.getChildren().contains(addshow.getPane())){
+                main.getChildren().remove(addshow.getPane());
             }
-            if(main.getChildren().contains(blockuser)){
-                main.getChildren().remove(blockuser);
+            if(main.getChildren().contains(blockuser.getRoot())){
+                main.getChildren().remove(blockuser.getRoot());
             }
-            main.getChildren().add(addmovie);
+            if(!main.getChildren().contains(addmovie.getPane())){
+            main.getChildren().add(addmovie.getPane());}
         });
         addShowButton.setOnMouseClicked(event -> {
-            if(main.getChildren().contains(addmovie)){
-                main.getChildren().remove(addmovie);
+            if(main.getChildren().contains(addmovie.getPane())){
+                main.getChildren().remove(addmovie.getPane());
             }
-            if(main.getChildren().contains(blockuser)){
-                main.getChildren().remove(blockuser);
+            if(main.getChildren().contains(blockuser.getRoot())){
+                main.getChildren().remove(blockuser.getRoot());
             }
-            main.getChildren().add(addshow);
+            if(!main.getChildren().contains(addshow.getPane())){
+                main.getChildren().add(addshow.getPane());
+            }
         });
         blockUserButton.setOnMouseClicked(event -> {
-            if(main.getChildren().contains(addshow)){
-                main.getChildren().remove(addshow);
+            if(main.getChildren().contains(addshow.getPane())){
+                main.getChildren().remove(addshow.getPane());
             }
-            if(main.getChildren().contains(addmovie)){
-                main.getChildren().remove(addmovie);
+            if(main.getChildren().contains(addmovie.getPane())){
+                main.getChildren().remove(addmovie.getPane());
             }
-            main.getChildren().add(blockuser);
+            if(!main.getChildren().contains(blockuser.getRoot())){
+                main.getChildren().add(blockuser.getRoot());
+            }
         });
 
     }

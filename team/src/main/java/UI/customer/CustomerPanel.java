@@ -23,18 +23,24 @@ public class CustomerPanel {
         getBookings getbookings = new getBookings();
         makeBooking makebooking = new makeBooking();
 
+        main.getChildren().add(selectionPanel);
+
         makeBookingButton.setOnMouseClicked(event -> {
-            if(main.getChildren().contains(getbookings)){
-                main.getChildren().remove(getbookings);
+            if(main.getChildren().contains(getbookings.getRoot())){
+                main.getChildren().remove(getbookings.getRoot());
             }
-            main.getChildren().add(makebooking);
+            if(!main.getChildren().contains(makebooking.getRoot())){
+            main.getChildren().add(makebooking.getRoot());}
         });
         getBookingsButton.setOnMouseClicked(event -> {
-            if(main.getChildren().contains(makebooking)){
-                main.getChildren().remove(makebooking);
+            if(main.getChildren().contains(makebooking.getRoot())){
+                main.getChildren().remove(makebooking.getRoot());
             }
-            main.getChildren().add(getbookings);
+            if(!main.getChildren().contains(getbookings.getRoot())){
+                main.getChildren().add(getbookings.getRoot());
+            }
         });
+        this.scene = new Scene(main,400,350);
     }
     public Scene getScene(){
         return this.scene;

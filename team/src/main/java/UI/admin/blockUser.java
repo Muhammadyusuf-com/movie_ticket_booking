@@ -18,11 +18,11 @@ public class blockUser extends GridPane {
         Button blockUser = new Button("Block User");
         TextField information = new TextField();
         information.setEditable(false);
-
+        information.setVisible(false);
         root.add(searchLabel,0,0);
-        root.add(information,0,1);
-        root.add(search,0,2);
-        root.add(searchButton,0,3);
+        root.add(search,0,1);
+        root.add(searchButton,0,2);
+        root.add(information,0,3);
         root.add(blockUser,0,4);
 
         //not Visible while not found
