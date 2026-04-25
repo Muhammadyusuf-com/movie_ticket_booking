@@ -4,11 +4,11 @@ import enums.AccountStatus;
 
 import java.io.Serializable;
 
-public abstract class Account implements Serializable {
+public class Account implements Serializable {
     private String id;
     private String passwrod;
     private AccountStatus status;
-    private Person person;
+    Person person;
     public Account(String id, String passwrod,AccountStatus status,Person person){
         this.id = id;
         this.passwrod = passwrod;

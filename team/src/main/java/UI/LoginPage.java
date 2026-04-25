@@ -27,16 +27,16 @@ public class LoginPage{
         root.setHgap(12);
         root.setPadding(new Insets(20));
 
-        TextField emailTextField = new TextField();
-        Label emailLabel = new Label("Email");
+        TextField idTextField = new TextField();
+        Label idLabel = new Label("id");
         TextField passwordTextField = new TextField();
         Label passwordLabel = new Label("Password");
         Button loginButton = new Button("Login");
         Button registerButton = new Button("Register");
         Button guestButton = new Button("Guest");
 
-        root.add(emailLabel,0,0);
-        root.add(emailTextField,1,0);
+        root.add(idLabel,0,0);
+        root.add(idTextField,1,0);
         root.add(passwordLabel,0,1);
         root.add(passwordTextField,1,1);
         root.add(registerButton,0,2);
@@ -45,7 +45,7 @@ public class LoginPage{
 
         loginButton.setOnMouseClicked(event -> {
             try{
-                int returned = checkLogin(emailTextField.getText().trim(),passwordTextField.getText().trim());
+                int returned = checkLogin(idTextField.getText().trim(),passwordTextField.getText().trim());
                 switch (returned){
                     case 1:
                         AdminControlPanel adminControlPanel = new AdminControlPanel();
@@ -82,13 +82,13 @@ public class LoginPage{
     });
 
     }
-    public static int checkLogin(String email, String password) throws FileNotFoundException {
+    public static int checkLogin(String id, String password) throws FileNotFoundException {
         String[] userLoginInfo = new String[0];
         try(BufferedReader bw = new BufferedReader(new FileReader("users.txt"))) {
             String line;
             while((line = bw.readLine()) != null){
                 userLoginInfo = line.split("\\|");
-                if(email.equals(userLoginInfo[0]) && password.equals(userLoginInfo[1])){
+                if(id.equals(userLoginInfo[0]) && password.equals(userLoginInfo[1])){
                     new showAlertMessage("Success", "You are successfully signed in", Alert.AlertType.INFORMATION);
                     switch(userLoginInfo[2]){
                         case "admin":
@@ -100,7 +100,7 @@ public class LoginPage{
                     }
                 }
             }
-        if(email.equals(userLoginInfo[0])){
+        if(id.equals(userLoginInfo[0])){
                 new showAlertMessage("Warning","Password doesn't match", Alert.AlertType.WARNING);
         }else{
                 new showAlertMessage("Warning","User not found", Alert.AlertType.ERROR);
