@@ -1,2 +1,1 @@
-250267@newuu.uz|123456|admin
-250333@newuu.uz|123456|customer
+1|2|customer|Active|2|2|2|2|Region|2|2|2

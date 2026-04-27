@@ -1,6 +1,5 @@
 package UI;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import enums.AccountStatus;
 import enums.Address;
 import identity.Account;
@@ -20,7 +19,7 @@ public class RegisterPage{
     private Scene scene;
     public RegisterPage(Stage stage){
         GridPane root = new GridPane();
-        scene = new Scene(root,360,180);
+        scene = new Scene(root,360,600);
         root.setVgap(12);
         root.setHgap(12);
         root.setPadding(new Insets(20));
@@ -52,24 +51,24 @@ public class RegisterPage{
         root.add(idTextField,1,0);
         root.add(passwordLabel,0,1);
         root.add(passwordTextField,1,1);
-        root.add(registerButton,0,2);
-        root.add(nameLabel,0,3);
-        root.add(nameField,1,3);
-        root.add(emailLabel,0,4);
-        root.add(emailField,1,4);
-        root.add(phoneLabel,0,5);
-        root.add(phoneField,1,5);
-        root.add(streetLabel,0,6);
-        root.add(streetField,1,6);
-        root.add(cityLabel,0,7);
-        root.add(cityField,1,7);
-        root.add(regionLabel,0,8);
-        root.add(regionField,1,8);
-        root.add(zipcodeLabel,0,9);
-        root.add(zipcodeField,1,9);
-        root.add(countryLabel,0,10);
-        root.add(countryField,1,10);
+        root.add(nameLabel,0,2);
+        root.add(nameField,1,2);
+        root.add(emailLabel,0,3);
+        root.add(emailField,1,3);
+        root.add(phoneLabel,0,4);
+        root.add(phoneField,1,4);
+        root.add(streetLabel,0,5);
+        root.add(streetField,1,5);
+        root.add(cityLabel,0,6);
+        root.add(cityField,1,6);
+        root.add(regionLabel,0,7);
+        root.add(regionField,1,7);
+        root.add(zipcodeLabel,0,8);
+        root.add(zipcodeField,1,8);
+        root.add(countryLabel,0,9);
+        root.add(countryField,1,9);
         root.add(goBackToLoginPageButton,0,11);
+        root.add(registerButton,1,11);
 
         registerButton.setOnMouseClicked(event -> {
             if(isUserExists(idTextField.getText().trim())){
@@ -105,27 +104,42 @@ public class RegisterPage{
 
     }
 
-    public boolean isUserExists(String id) {
-        ObjectMapper mapper = new ObjectMapper();
+    public boolean isUserExists(String id) throws RuntimeException {
         try {
-            Account user = mapper.readValue(new File("user.json"), Account.class);
-            if(user.getId().equals(id)){
-                return false;
+            BufferedReader br = new BufferedReader(new FileReader("users.txt"));
+            String line;
+            while((line = br.readLine()) != null){
+                String[] data = line.trim().split("\\|");
+                if(data[0].equals(id)){
+                    return true;
+                }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            br.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return true;
+        return false;
+
     }
 
     public void registerUser(Account account) {
-        ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(new File("users.json"), account);
-            mapper.writerWithDefaultPrettyPrinter()
-                    .writeValueAsString(account);
-        } catch (Exception e) {
-            e.printStackTrace();
+            BufferedWriter bw = new BufferedWriter(new FileWriter("users.txt",true));
+            String line = account.getId()+"|"
+                    +account.getPasswrod()+"|"
+                    +account.getStatus()+"|"
+                    +account.getPerson().getName()+"|"
+                    +account.getPerson().getAddress().city()+"|"
+                    +account.getPerson().getAddress().streetAddress()+"|"
+                    +account.getPerson().getAddress().country()+"|"
+                    +account.getPerson().getAddress().State()+"|"
+                    +account.getPerson().getAddress().zipcode()+"|"
+                    +account.getPerson().getEmail()+"|"
+                    +account.getPerson().getPhone();
+            bw.write(line);
+            bw.close();
+        }catch (IOException e){
+            throw new RuntimeException(e);
         }
     }
     public Scene getScene(){

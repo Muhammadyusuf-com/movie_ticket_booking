@@ -13,8 +13,8 @@ public class CustomerPanel {
         main.setPadding(new Insets(10));
         VBox selectionPanel = new VBox(15);
         selectionPanel.setPadding(new Insets(10));
-        Button makeBookingButton = new Button("Add Movie");
-        Button getBookingsButton = new Button("Add Show");
+        Button makeBookingButton = new Button("Make Booking");
+        Button getBookingsButton = new Button("Get Bookings");
         selectionPanel.getChildren().addAll(
                 makeBookingButton,
                 getBookingsButton

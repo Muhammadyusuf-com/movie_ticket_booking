@@ -23,6 +23,9 @@ public class Account implements Serializable {
     public String getPasswrod() {
         return passwrod;
     }
+    public Person getPerson(){
+        return this.person;
+    }
 
     public void setPasswrod(String passwrod) {
         this.passwrod = passwrod;
